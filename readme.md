@@ -1,6 +1,6 @@
 Change the value of `i` in the script:
 ~~~
--> % coffee index.coffee
+-> % coffee test.coffee
 $ i
 > 32
 $ i += 2
