@@ -87,12 +87,11 @@ class Presenter
     if @[output]
       @prompt() if @[output]()
     else
-      console.log("=> #{@scope(output)}")
+      console.log("=> ", @scope(output))
       @prompt()
 
 pry = (scope) ->
   presenter = new Presenter(scope)
-  count = 0
   presenter.whereami()
   presenter.prompt()
 
