@@ -4,6 +4,35 @@ pygmentize = require('pygmentize-bundled')
 deasync = require("deasync")
 chalk = require('chalk')
 
+class SyncHighlight
+
+  content: null
+
+  type: null
+
+  constructor: (obj, @type = 'javascript') ->
+    if typeof obj == 'function'
+      @content = obj.toString()
+    else if typeof obj == 'string'
+      @content = obj
+    else
+      @content = JSON.stringify(obj, @stringify, "\t")
+
+  stringify: (key, value) ->
+    return util.inspect(value) if typeof value == 'function'
+    value
+
+  highlight: ->
+    done = data = false
+    pygmentize
+      lang: @type
+      format: "terminal"
+    , @content, (err, res) =>
+      done = true
+      data = res.toString()
+    deasync.runLoopOnce() until done
+    data
+
 class File
 
   constructor: (@file, @line) ->
@@ -18,16 +47,7 @@ class File
     fs.readFileSync(@file).toString()
 
   formatted_content: ->
-    done = false
-    data = null
-    pygmentize
-      lang: @type()
-      format: "terminal"
-    , @content(), (err, res) =>
-      done = true
-      data = @add_line_numbers(res.toString())
-    deasync.runLoopOnce() until done
-    data
+    @add_line_numbers(new SyncHighlight(@content(), @type()).highlight())
 
   add_line_numbers: (content) ->
     lines = content.split("\n")
@@ -83,11 +103,12 @@ class Presenter
     false
 
   prompt: ->
-    @commands.push output = prompt("[#{@commands.length}] pry> ")
-    if @[output]
-      @prompt() if @[output]()
+    @commands.push output = prompt("[#{@commands.length}] pryjs> ")
+    ssv = output.split(' ')
+    if @[ssv[0]]
+      @prompt() if @[ssv[0]].apply(@, ssv.splice(1))
     else
-      console.log("=> ", @scope(output))
+      console.log("=> ", new SyncHighlight(@scope("_ = #{output};_")).highlight())
       @prompt()
 
 pry = (scope) ->
