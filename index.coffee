@@ -70,7 +70,9 @@ class Presenter
 
   pos: null
 
-  constructor: ->
+  prompt_count: 0
+
+  constructor: (@scope) ->
     @pos = new Position()
 
   whereami: ->
@@ -80,19 +82,19 @@ class Presenter
   stop: ->
     false
 
+  prompt: ->
+    output = prompt("[#{@prompt_count}] pry> ")
+    if @[output]
+      @prompt() if @[output]()
+    else
+      console.log("=> #{@scope(output)}")
+      @prompt()
+    @prompt_count += 1
+
 pry = (scope) ->
-  presenter = new Presenter()
+  presenter = new Presenter(scope)
   count = 0
   presenter.whereami()
-  (pr = ->
-    output = prompt("[#{count}] pry> ")
-    count++
-    if presenter[output]
-      pr() if presenter[output]()
-    else
-      console.log("=> #{scope(output)}")
-      pr()
-  )()
-
+  presenter.prompt()
 
 module.exports = pry
