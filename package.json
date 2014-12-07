@@ -9,6 +9,7 @@
   "author": "blainesch",
   "license": "MIT",
   "dependencies": {
-    "sync-prompt": "^0.4.1"
+    "sync-prompt": "^0.4.1",
+    "chalk": "^0.5.1"
   }
 }
