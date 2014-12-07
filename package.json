@@ -10,6 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "sync-prompt": "^0.4.1",
-    "chalk": "^0.5.1"
+    "chalk": "^0.5.1",
+    "pygmentize-bundled": "^2.3.0",
+    "deasync": "0.0.7"
   }
 }
