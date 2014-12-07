@@ -22,6 +22,10 @@ While you are in the prompt there are a few things you might want to do:
 * `stop` will exit the pryjs prompt and continue through the app.
 
 ### Example
+~~~
+npm install --save pryjs
+~~~
+
 ~~~ coffeescript
 pry = require 'pryjs'
 
