@@ -64,7 +64,7 @@ class Position
     parseInt(@stack()[2], 10)
 
   stack: ->
-    @_stack.split("\n")[4].match(/\(([^:]+):(\d+)/)
+    @_stack.split("\n")[4].match(/([^ (]+):(\d+):\d+\)?$/)
 
 class Presenter
 
