@@ -50,7 +50,7 @@ class Position
   constructor: ->
     @_stack = new Error().stack
 
-  show: (before = 5, after = 5) ->
+  show: (before, after) ->
     console.log(@file()
       .formatted_content()
       .split("\n")
@@ -75,8 +75,8 @@ class Presenter
   constructor: (@scope) ->
     @pos = new Position()
 
-  whereami: ->
-    @pos.show()
+  whereami: (before = 5, after = 5) ->
+    @pos.show.apply(@pos, [before, after].map (i) -> parseInt(i, 10))
     true
 
   stop: ->
