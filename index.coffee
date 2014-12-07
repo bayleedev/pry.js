@@ -70,7 +70,7 @@ class Presenter
 
   pos: null
 
-  prompt_count: 0
+  commands: []
 
   constructor: (@scope) ->
     @pos = new Position()
@@ -83,13 +83,12 @@ class Presenter
     false
 
   prompt: ->
-    output = prompt("[#{@prompt_count}] pry> ")
+    @commands.push output = prompt("[#{@commands.length}] pry> ")
     if @[output]
       @prompt() if @[output]()
     else
       console.log("=> #{@scope(output)}")
       @prompt()
-    @prompt_count += 1
 
 pry = (scope) ->
   presenter = new Presenter(scope)
