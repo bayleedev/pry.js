@@ -1,8 +1,8 @@
 {
   "name": "pryjs",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Pry like ability in javascript.",
-  "main": "index.coffee",
+  "main": "lib/pry.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +12,8 @@
     "sync-prompt": "^0.4.1",
     "chalk": "^0.5.1",
     "pygmentize-bundled": "^2.3.0",
-    "deasync": "0.0.7"
+    "deasync": "0.0.7",
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.12.0"
   }
 }
