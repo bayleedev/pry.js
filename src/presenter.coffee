@@ -1,6 +1,7 @@
 SyncHighlight = require('./sync_highlight')
 Position = require('./Position')
 SyncPrompt = require('./sync_prompt')
+fs = require('fs')
 
 class Presenter
 
@@ -15,6 +16,12 @@ class Presenter
         "[#{@cli.history().length}] pryjs> "
       delegate: @
     })
+
+  # @public
+  version: ->
+    content = fs.readFileSync("#{__dirname}/../package.json")
+    console.log(JSON.parse(content)['version'])
+    true
 
   # @public
   whereami: (before = 5, after = 5) ->

@@ -1,3 +1,7 @@
+# 0.0.6
+* Allow version to be retrieved from the prompt.
+* Fix prompt not giving back control of i/o.
+
 # 0.0.5
 * Keyboard shorts in prompt.
 * History in the prompt.
