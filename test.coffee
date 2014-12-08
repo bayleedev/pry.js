@@ -1,4 +1,4 @@
-pry = require './src/index'
+pry = require './src/pry'
 
 testFun = ->
   i = 32

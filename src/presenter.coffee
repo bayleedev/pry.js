@@ -10,6 +10,11 @@ class Presenter
 
   constructor: (@scope) ->
     @pos = new Position()
+    @sync_prompt = new SyncPrompt({
+      prompt: ->
+        "[#{@cli.history().length}] pryjs> "
+      delegate: @
+    })
 
   # @public
   whereami: (before = 5, after = 5) ->
@@ -18,7 +23,6 @@ class Presenter
 
   # @public
   stop: ->
-    @sync_prompt = null
     false
 
   # @public
@@ -27,12 +31,7 @@ class Presenter
     true
 
   prompt: ->
-    return if @sync_prompt
-    @sync_prompt = new SyncPrompt({
-      prompt: ->
-        "[#{@cli.history().length}] pryjs> "
-      delegate: @
-    })
+    return true unless @sync_prompt.done
     @sync_prompt.open()
 
 module.exports = Presenter
