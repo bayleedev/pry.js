@@ -1,6 +1,7 @@
 # 0.0.8
 
 * Add a new `kill` command to kill the entire process instead of just this prompt.
+* Add a new `wtf` command to show you the last caught error.
 
 # 0.0.7
 

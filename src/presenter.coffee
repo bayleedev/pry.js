@@ -9,6 +9,8 @@ class Presenter
 
   sync_prompt: null
 
+  last_error: {}
+
   constructor: (@scope) ->
     @pos = new Position()
     @sync_prompt = new SyncPrompt({
@@ -38,11 +40,20 @@ class Presenter
     false
 
   # @public
+  wtf: ->
+    if @last_error.stack
+      console.log(@last_error.stack)
+    else
+      console.log('No errors')
+    true
+
+  # @public
   method_missing: (input) ->
     try
       console.log("=> ", new SyncHighlight(@scope("_ = #{input};_")).highlight())
     catch err
-      console.log("=> ", err)
+      @last_error = err
+      console.log("=> ", err, err.stack)
     true
 
   prompt: ->
