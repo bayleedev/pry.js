@@ -21,44 +21,11 @@ While you are in the prompt there are a few things you might want to do:
 * `whereami` will show you exactly where you are in the code. Accepts two integers to replace the default 5 before and 5 after.
 * `stop` will exit the pryjs prompt and continue through the app.
 
-### Example
+### Installing
 ~~~
 npm install --save pryjs
 ~~~
 
-~~~ coffeescript
-pry = require 'pryjs'
+### Examples
 
-testFun = ->
-  i = 32
-
-  example = ->
-    console.log 'n called!'
-
-  pry (p) -> eval p # pry call
-
-  example()
-  console.log('ahh', i)
-
-testFun()
-~~~
-~~~ javascript
-var pry, testFun;
-
-pry = require('pryjs');
-
-testFun = function() {
-  var example, i;
-  i = 32;
-  example = function() {
-    console.log('n called!');
-  };
-  pry(function(p) {
-    return eval(p);
-  }); // pry call
-  example();
-  console.log('ahh', i);
-};
-
-testFun();
-~~~
+Examples can be found in the [examples directory](./examples).
