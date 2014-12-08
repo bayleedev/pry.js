@@ -1,3 +1,7 @@
+# 0.0.8
+
+* Add a new `kill` command to kill the entire process instead of just this prompt.
+
 # 0.0.7
 
 * Fix array slice bug when trying to view lines before 0.

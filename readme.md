@@ -20,6 +20,7 @@ pry(function(p) {
 While you are in the prompt there are a few things you might want to do:
 * `whereami` will show you exactly where you are in the code. Accepts two integers to replace the default 5 before and 5 after.
 * `stop` will exit the pryjs prompt and continue through the app.
+* `kill` completely stop the script.
 
 ### Installing
 ~~~

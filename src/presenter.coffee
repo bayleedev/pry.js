@@ -33,6 +33,11 @@ class Presenter
     false
 
   # @public
+  kill: ->
+    process.kill()
+    false
+
+  # @public
   method_missing: (input) ->
     try
       console.log("=> ", new SyncHighlight(@scope("_ = #{input};_")).highlight())
