@@ -8,10 +8,12 @@ class Position
     @_stack = new Error().stack
 
   show: (before, after) ->
+    start = @line() - (before + 1)
+    start = (if start < 0 then 0 else start)
     console.log(@file()
       .formatted_content()
       .split("\n")
-      .slice(@line() - (before + 1), @line() + after)
+      .slice(start, @line() + after)
       .join("\n"))
 
   file: ->
