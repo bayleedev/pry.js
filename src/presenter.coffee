@@ -1,30 +1,38 @@
-prompt = require('sync-prompt').prompt
 SyncHighlight = require('./sync_highlight')
 Position = require('./Position')
+SyncPrompt = require('./sync_prompt')
 
 class Presenter
 
   pos: null
 
-  commands: []
+  sync_prompt: null
 
   constructor: (@scope) ->
     @pos = new Position()
 
+  # @public
   whereami: (before = 5, after = 5) ->
     @pos.show.apply(@pos, [before, after].map (i) -> parseInt(i, 10))
     true
 
+  # @public
   stop: ->
+    @sync_prompt = null
     false
 
+  # @public
+  method_missing: (input) ->
+    console.log("=> ", new SyncHighlight(@scope("_ = #{input};_")).highlight())
+    true
+
   prompt: ->
-    @commands.push output = prompt("[#{@commands.length}] pryjs> ")
-    ssv = output.split(' ')
-    if @[ssv[0]]
-      @prompt() if @[ssv[0]].apply(@, ssv.splice(1))
-    else
-      console.log("=> ", new SyncHighlight(@scope("_ = #{output};_")).highlight())
-      @prompt()
+    return if @sync_prompt
+    @sync_prompt = new SyncPrompt({
+      prompt: ->
+        "[#{@cli.history().length}] pryjs> "
+      delegate: @
+    })
+    @sync_prompt.open()
 
 module.exports = Presenter
