@@ -34,7 +34,10 @@ class Presenter
 
   # @public
   method_missing: (input) ->
-    console.log("=> ", new SyncHighlight(@scope("_ = #{input};_")).highlight())
+    try
+      console.log("=> ", new SyncHighlight(@scope("_ = #{input};_")).highlight())
+    catch err
+      console.log("=> ", err)
     true
 
   prompt: ->
