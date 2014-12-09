@@ -1,8 +1,6 @@
 ## Pryjs
 A prototype for a [pry](https://github.com/pry/pry)-like node module.
 
-![pryjs](./assets/screenshot.png)
-
 ### Usage
 It's not as pretty, but you'll need to add the following to your code:
 
@@ -31,3 +29,8 @@ npm install --save pryjs
 ### Examples
 
 Examples can be found in the [examples directory](./examples).
+
+### Screenshots
+![pryjs](./assets/javascript.png)
+![pryjs](./assets/coffeescript.png)
+
