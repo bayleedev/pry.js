@@ -78,7 +78,7 @@ class Presenter
   method_missing: (input) ->
     try
       output = @compiler.execute(input)
-      console.log("=> ", new SyncHighlight(output).highlight())
+      console.log("=> ", new SyncHighlight(output or 'undefined').highlight())
     catch err
       @last_error = err
       console.log("=> ", err, err.stack)
