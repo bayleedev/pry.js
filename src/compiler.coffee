@@ -9,17 +9,20 @@ class Compiler
 
   constructor: (@scope) ->
 
+  set_mode: (mode) ->
+    @mode_id = @modes.indexOf(mode)
+
   toggle_mode: ->
     @mode_id = (@mode_id + 1) % @modes.length
-    console.log "=> Switched mode to '#{@modes[@mode_id]}'."
+    console.log "=> ", "Switched mode to '#{@modes[@mode_id]}'."
 
   execute: (code) ->
     @["execute_#{@modes[@mode_id]}"](code)
 
-  execute_js: (code) ->
-    @scope("_ = #{code};_")
-
   execute_coffee: (code) ->
-    @scope("_ = #{coffee.compile(code, bare: true)};_")
+    @execute_js(coffee.compile(code, bare: true))
+
+  execute_js: (code) ->
+    @scope(code)
 
 module.exports = Compiler

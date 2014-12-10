@@ -6,6 +6,7 @@
 * Add a new `wtf` command to show you the last caught error.
 * Allow you to type CoffeeScript in the prompt.
 * Add a new `help` command to list all the available commands.
+* Add new `play` command that can play lines via their absolute line numbers.
 
 ## Fixed Bugs
 

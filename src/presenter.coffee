@@ -30,6 +30,22 @@ class Presenter
     true
 
   ###
+  # Play specific lines of code, as if the user entered them.
+  # `play 10 12` Plays line 10-12
+  # `play 10` Plays line 10
+  ###
+  play: (start, end = start) ->
+    file = @pos.file()
+    _mode = @compiler.mode_id
+    if file.type() is 'coffeescript'
+      @compiler.set_mode('coffee')
+    else
+      @compiler.set_mode('js')
+    @method_missing(file.by_lines(start, end))
+    @compiler.mode_id = _mode
+    true
+
+  ###
   # Switch betwen JavaScipt and CoffeeScript input modes.
   ###
   mode: ->

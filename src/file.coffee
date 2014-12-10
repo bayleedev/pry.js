@@ -1,6 +1,6 @@
-fs = require('fs')
-chalk = require('chalk')
-SyncHighlight = require ('./sync_highlight')
+fs = require 'fs'
+chalk = require 'chalk'
+SyncHighlight = require './sync_highlight'
 
 class File
 
@@ -13,10 +13,13 @@ class File
       'javascript'
 
   content: ->
-    fs.readFileSync(@file).toString()
+    @_content ||= fs.readFileSync(@file).toString()
 
   formatted_content: ->
     @add_line_numbers(new SyncHighlight(@content(), @type()).highlight())
+
+  by_lines: (start, end) ->
+    @content().split("\n").slice(start - 1, end).join("\n")
 
   add_line_numbers: (content) ->
     lines = content.split("\n")
