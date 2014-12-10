@@ -1,23 +1,26 @@
 SyncHighlight = require('./sync_highlight')
 Position = require('./Position')
 SyncPrompt = require('./sync_prompt')
+Compiler = require('./compiler')
 fs = require('fs')
 
 class Presenter
 
-  pos: null
-
-  sync_prompt: null
-
   last_error: {}
 
-  constructor: (@scope) ->
+  constructor: (scope) ->
+    @compiler = new Compiler(scope)
     @pos = new Position()
     @sync_prompt = new SyncPrompt({
       prompt: ->
         "[#{@cli.history().length}] pryjs> "
       delegate: @
     })
+
+  # @public
+  mode: ->
+    @compiler.toggle_mode()
+    true
 
   # @public
   version: ->
@@ -50,7 +53,8 @@ class Presenter
   # @public
   method_missing: (input) ->
     try
-      console.log("=> ", new SyncHighlight(@scope("_ = #{input};_")).highlight())
+      output = @compiler.execute(input)
+      console.log("=> ", new SyncHighlight(output).highlight())
     catch err
       @last_error = err
       console.log("=> ", err, err.stack)

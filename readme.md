@@ -20,6 +20,8 @@ While you are in the prompt there are a few things you might want to do:
 * `stop` will exit the pryjs prompt and continue through the app.
 * `kill` completely stop the script.
 * `wtf` display the last caught exception.
+* `version` display the current version.
+* `mode` display the current version.
 
 ### Installing
 ~~~

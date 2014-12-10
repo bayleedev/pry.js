@@ -10,10 +10,11 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^0.5.1",
-    "pygmentize-bundled": "^2.3.0",
+    "cline": "^0.8.0",
+    "coffee-script": "^1.8.0",
     "deasync": "0.0.7",
     "grunt": "^0.4.5",
     "grunt-contrib-coffee": "^0.12.0",
-    "cline": "^0.8.0"
+    "pygmentize-bundled": "^2.3.0"
   }
 }

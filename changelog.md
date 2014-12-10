@@ -1,7 +1,8 @@
-# 0.0.8
+# Non Released
 
 * Add a new `kill` command to kill the entire process instead of just this prompt.
 * Add a new `wtf` command to show you the last caught error.
+* Allow you to type CoffeeScript in the prompt.
 
 # 0.0.7
 
