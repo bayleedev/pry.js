@@ -21,7 +21,8 @@ While you are in the prompt there are a few things you might want to do:
 * `kill` completely stop the script.
 * `wtf` display the last caught exception.
 * `version` display the current version.
-* `mode` display the current version.
+* `mode` switch between javascript and coffeescript mode. Defaults to javascript.
+* `help` display all the available commands.
 
 ### Installing
 ~~~

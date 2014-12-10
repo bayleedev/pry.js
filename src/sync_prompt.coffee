@@ -1,4 +1,4 @@
-cli = require('cline');
+cli = require('cline')
 deasync = require('deasync')
 
 class SyncPrompt
@@ -13,6 +13,7 @@ class SyncPrompt
   open: ->
     @done = false
     @cli = cli()
+    @cli.usage = ->
     @cli.interact(@prompt.call(@))
     @cli.on('history', @handle)
     deasync.runLoopOnce() until @done

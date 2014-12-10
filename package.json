@@ -15,6 +15,7 @@
     "deasync": "0.0.7",
     "grunt": "^0.4.5",
     "grunt-contrib-coffee": "^0.12.0",
-    "pygmentize-bundled": "^2.3.0"
+    "pygmentize-bundled": "^2.3.0",
+    "underscore": "^1.7.0"
   }
 }

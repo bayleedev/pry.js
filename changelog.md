@@ -3,6 +3,7 @@
 * Add a new `kill` command to kill the entire process instead of just this prompt.
 * Add a new `wtf` command to show you the last caught error.
 * Allow you to type CoffeeScript in the prompt.
+* Add a new `help` command to list all the available commands.
 
 # 0.0.7
 
