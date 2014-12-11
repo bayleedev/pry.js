@@ -1,5 +1,4 @@
 coffee = require 'coffee-script'
-pry = require './pry'
 
 class Compiler
 

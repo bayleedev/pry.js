@@ -1,5 +1,5 @@
-pygmentize = require('pygmentize-bundled')
-deasync = require("deasync")
+pygmentize = require 'pygmentize-bundled'
+deasync = require "deasync"
 
 class SyncHighlight
 

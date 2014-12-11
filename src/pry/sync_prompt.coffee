@@ -1,5 +1,5 @@
-cli = require('cline')
-deasync = require('deasync')
+cli = require 'cline'
+deasync = require 'deasync'
 
 class SyncPrompt
 

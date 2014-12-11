@@ -1,4 +1,4 @@
-File = require('./file')
+File = require './file'
 
 class Position
 
