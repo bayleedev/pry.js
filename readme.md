@@ -4,11 +4,18 @@ A prototype for a [pry](https://github.com/pry/pry)-like node module.
 
 [![Build Status](https://travis-ci.org/blainesch/pry.js.svg?branch=master)](https://travis-ci.org/blainesch/pry.js)
 
+### Installing
+
+~~~
+npm install --save pryjs
+~~~
+
 ### Usage
 
 Throw this beautiful snippet in the middle of your code:
 
 ~~~ javascript
+pry = require('pryjs')
 eval(pry.it)
 ~~~
 
@@ -23,12 +30,6 @@ While you are in the prompt there are a few things you might want to do:
 * `mode` switch between javascript and coffeescript mode. Defaults to javascript.
 * `help` display all the available commands.
 * `play` play lines of code as if you had entered them. Accepts two integers: start and end. End defaults to start.
-
-### Installing
-
-~~~
-npm install --save pryjs
-~~~
 
 ### Examples
 
