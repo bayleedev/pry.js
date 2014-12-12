@@ -1,6 +1,6 @@
 assert = require('assert')
 expect = require('chai').expect
-Compiler = require('../src/pry/compiler')
+Compiler = require('../lib/pry/compiler')
 
 describe 'Compiler', ->
 

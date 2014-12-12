@@ -1,7 +1,7 @@
 assert = require('assert')
 expect = require('chai').expect
 chalk = require('chalk')
-File = require('../src/pry/file')
+File = require('../lib/pry/file')
 
 describe 'File', ->
 

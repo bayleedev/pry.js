@@ -23,6 +23,6 @@ class Position
     parseInt(@stack()[2], 10)
 
   stack: ->
-    @_stack.split("\n")[4].match(/([^ (]+):(\d+):\d+\)?$/)
+    @_stack.split("\n")[6].match(/([^ (]+):(\d+):\d+\)?$/)
 
 module.exports = Position
