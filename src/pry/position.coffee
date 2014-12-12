@@ -4,13 +4,13 @@ class Position
 
   _stack: null
 
-  constructor: ->
+  constructor: ({@output}) ->
     @_stack = new Error().stack
 
   show: (before, after) ->
     start = @line() - (before + 1)
     start = (if start < 0 then 0 else start)
-    console.log(@file()
+    @output.send(@file()
       .formatted_content()
       .split("\n")
       .slice(start, @line() + after)

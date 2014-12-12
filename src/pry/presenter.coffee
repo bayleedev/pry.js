@@ -1,24 +1,31 @@
-SyncHighlight = require './sync_highlight'
-Position = require './Position'
-SyncPrompt = require './sync_prompt'
-Compiler = require './compiler'
-Docs = require './file_doc'
-fs = require 'fs'
-_ = require 'underscore'
-chalk = require 'chalk'
+SyncHighlight = require('./sync_highlight')
+Position = require('./position')
+SyncPrompt = require('./sync_prompt')
+Compiler = require('./compiler')
+Docs = require('./file_doc')
+_ = require('underscore')
+chalk = require('chalk')
+chalk.enabled = true
 
 class Presenter
 
   last_error: {}
 
-  constructor: (scope) ->
-    @compiler = new Compiler(scope)
-    @pos = new Position()
-    @sync_prompt = new SyncPrompt({
+  constructor: (@scope, @options = {}) ->
+    @pos = new Position({output: @output()})
+
+  user_prompt: ->
+    @_user_prompt ||= new SyncPrompt({
       prompt: ->
         "[#{@cli.history().length}] pryjs> "
       delegate: @
     })
+
+  output: ->
+    require("./output/#{@options.classes?.output || 'local'}_output")
+
+  compiler: ->
+    @_compiler ||= new Compiler({@scope, output: @output()})
 
   ###
   # Display this help information.
@@ -26,7 +33,7 @@ class Presenter
   help: ->
     docs = new Docs(__filename).get_docs()
     _.each _.pairs(docs), ([name, docs]) ->
-      console.log "#{chalk.red(name)}: #{docs.join('\n')}"
+      @output().send "#{chalk.red(name)}: #{docs.join('\n')}"
     true
 
   ###
@@ -35,29 +42,22 @@ class Presenter
   # `play 10` Plays line 10
   ###
   play: (start, end = start) ->
-    file = @pos.file()
-    _mode = @compiler.mode_id
-    if file.type() is 'coffeescript'
-      @compiler.set_mode('coffee')
-    else
-      @compiler.set_mode('js')
-    @method_missing(file.by_lines(start, end))
-    @compiler.mode_id = _mode
+    @method_missing(file.by_lines(start, end), @pos.file().type())
     true
 
   ###
   # Switch betwen JavaScipt and CoffeeScript input modes.
   ###
   mode: ->
-    @compiler.toggle_mode()
+    @compiler().toggle_mode()
     true
 
   ###
   # Show the current version number of pry you have installed.
   ###
   version: ->
-    content = fs.readFileSync("#{__dirname}/../package.json")
-    console.log(JSON.parse(content)['version'])
+    content = require('fs').readFileSync("#{__dirname}/../../package.json")
+    @output().send(JSON.parse(content)['version'])
     true
 
   ###
@@ -86,22 +86,22 @@ class Presenter
   ###
   wtf: ->
     if @last_error.stack
-      console.log(@last_error.stack)
+      @output().send(@last_error.stack)
     else
-      console.log('No errors')
+      @output().send('No errors')
     true
 
-  method_missing: (input) ->
+  method_missing: (input, language) ->
     try
-      output = @compiler.execute(input)
-      console.log("=> ", new SyncHighlight(output or 'undefined').highlight())
+      output = @compiler().execute(input, language)
+      @output().send("=> ", new SyncHighlight(output or 'undefined').highlight())
     catch err
       @last_error = err
-      console.log("=> ", err, err.stack)
+      @output().send("=> ", err, err.stack)
     true
 
   prompt: ->
-    return true unless @sync_prompt.done
-    @sync_prompt.open()
+    return true unless @user_prompt().done
+    @user_prompt().open()
 
 module.exports = Presenter

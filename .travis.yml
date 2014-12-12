@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - 0.10.33
+
+before_script:
+  - npm install -g mocha
+
+cache:
+  directories:
+    - node_modules

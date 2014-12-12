@@ -4,7 +4,7 @@
   "description": "Pry like ability in javascript.",
   "main": "lib/pry.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests"
   },
   "author": "blainesch",
   "license": "MIT",
@@ -17,5 +17,22 @@
     "grunt-contrib-coffee": "^0.12.0",
     "pygmentize-bundled": "^2.3.0",
     "underscore": "^1.7.0"
-  }
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha-pride": "0.0.2",
+    "sinon": "^1.12.1"
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blainesch/pry.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blainesch/pry.js/issues"
+  },
+  "homepage": "https://github.com/blainesch/pry.js"
 }

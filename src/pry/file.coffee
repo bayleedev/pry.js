@@ -8,9 +8,9 @@ class File
 
   type: ->
     if @file.match /coffee/
-      'coffeescript'
+      'coffee'
     else
-      'javascript'
+      'js'
 
   content: ->
     @_content ||= fs.readFileSync(@file).toString()
