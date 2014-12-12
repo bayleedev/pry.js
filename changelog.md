@@ -7,6 +7,7 @@
 * Allow you to type CoffeeScript in the prompt.
 * Add a new `help` command to list all the available commands.
 * Add new `play` command that can play lines via their absolute line numbers.
+* Change the pry statement to a much prettier `eval(pry.it)`.
 
 ## Fixed Bugs
 

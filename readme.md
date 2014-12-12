@@ -1,22 +1,19 @@
 ## Pryjs
+
 A prototype for a [pry](https://github.com/pry/pry)-like node module.
 
 [![Build Status](https://travis-ci.org/blainesch/pry.js.svg?branch=master)](https://travis-ci.org/blainesch/pry.js)
 
 ### Usage
-It's not as pretty, but you'll need to add the following to your code:
 
-~~~ coffeescript
-pry (p) -> eval p
-~~~
+Throw this beautiful snippet in the middle of your code:
 
 ~~~ javascript
-pry(function(p) {
-  return eval(p);
-});
+eval(pry.it)
 ~~~
 
 ### Extra Commands
+
 While you are in the prompt there are a few things you might want to do:
 * `whereami` will show you exactly where you are in the code. Accepts two integers to replace the default 5 before and 5 after.
 * `stop` will exit the pryjs prompt and continue through the app.
@@ -28,6 +25,7 @@ While you are in the prompt there are a few things you might want to do:
 * `play` play lines of code as if you had entered them. Accepts two integers: start and end. End defaults to start.
 
 ### Installing
+
 ~~~
 npm install --save pryjs
 ~~~
@@ -37,6 +35,6 @@ npm install --save pryjs
 Examples can be found in the [examples directory](./examples).
 
 ### Screenshots
+
 ![pryjs](./assets/javascript.png)
 ![pryjs](./assets/coffeescript.png)
-
