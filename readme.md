@@ -1,6 +1,8 @@
 ## Pryjs
 A prototype for a [pry](https://github.com/pry/pry)-like node module.
 
+[![Build Status](https://travis-ci.org/blainesch/pry.js.svg?branch=master)](https://travis-ci.org/blainesch/pry.js)
+
 ### Usage
 It's not as pretty, but you'll need to add the following to your code:
 
