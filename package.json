@@ -1,6 +1,6 @@
 {
   "name": "pryjs",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Pry like ability in javascript.",
   "main": "lib/pry.js",
   "scripts": {
