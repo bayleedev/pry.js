@@ -1,4 +1,4 @@
-pry = require('../lib/pry');
+pry = require('../lib/pry'); // require('pryjs')
 
 // http://rosettacode.org/wiki/FizzBuzz#JavaScript
 function fizzBuzz() {

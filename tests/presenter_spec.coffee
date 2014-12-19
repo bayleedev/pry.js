@@ -1,7 +1,7 @@
 assert = require('assert')
 expect = require('chai').expect
 sinon = require('sinon')
-Presenter = require('../lib/pry/presenter')
+Presenter = require('../src/pry/presenter')
 
 describe 'Presenter', ->
 
