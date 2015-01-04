@@ -1,4 +1,4 @@
-Presenter = require './pry/presenter'
+App = require('./pry/app')
 
 class Pry
 
@@ -9,8 +9,8 @@ class Pry
     pry.open (input) -> eval(input)
 
   open: (scope) ->
-    presenter = new Presenter(scope)
-    presenter.whereami()
-    presenter.prompt()
+    app = new App(scope)
+    app.find_command('whereami')
+    app.prompt()
 
 module.exports = new Pry

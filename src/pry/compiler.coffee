@@ -1,5 +1,5 @@
-coffee = require 'coffee-script'
-pry = require '../pry'
+coffee = require('coffee-script')
+pry = require('../pry')
 
 class Compiler
 
@@ -7,14 +7,13 @@ class Compiler
 
   modes: ['js', 'coffee']
 
-  constructor: ({@scope, @output}) ->
+  constructor: ({@scope}) ->
 
-  set_mode: (mode) ->
-    @mode_id = @modes.indexOf(mode)
+  mode: ->
+    @modes[@mode_id]
 
   toggle_mode: ->
     @mode_id = (@mode_id + 1) % @modes.length
-    @output.send "=> ", "Switched mode to '#{@modes[@mode_id]}'."
 
   execute: (code, language = @modes[@mode_id]) ->
     @["execute_#{language}"](code)

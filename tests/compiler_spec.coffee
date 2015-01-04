@@ -1,4 +1,3 @@
-assert = require('assert')
 expect = require('chai').expect
 Compiler = require('../src/pry/compiler')
 
