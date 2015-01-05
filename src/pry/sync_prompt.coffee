@@ -1,34 +1,29 @@
-cli = require 'cline'
-deasync = require 'deasync'
+prompt = require('cli-input')
+deasync = require('deasync')
 
 class SyncPrompt
 
-  prompt: null   # function to determine next promp
-                 # ran before each iteration
-  delegate: null # object it delegates to by default
   done: true
 
-  constructor: ({@prompt, @delegate}) ->
+  constructor: ({@callback}) ->
+    @cli = prompt
+      infinite: false,
+      format: 'pryjs> '
+    @done = false
+    @cli.on('value', @handle)
 
   open: ->
-    @done = false
-    @cli = cli()
-    @cli.usage = ->
-    @cli.interact(@prompt.call(@))
-    @cli.on('history', @handle)
+    @cli.run()
     deasync.runLoopOnce() until @done
 
-  handle: (input) =>
-    ssv = input.split(' ')
-    if @delegate[ssv[0]]
-      @close() unless @delegate[ssv[0]].apply(@delegate, ssv.splice(1))
+  handle: (command) =>
+    if @callback(command.join(' '))
+      @open()
     else
-      @delegate.method_missing(input)
-    @cli._prompt = @prompt.call(@)
+      @close()
 
   close: ->
-    delete @cli._nextTick
-    @cli.stream.close()
+    @cli.readline.close()
     @done = true
 
 module.exports = SyncPrompt
