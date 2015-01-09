@@ -1,6 +1,8 @@
 Command = require('../command')
 Range = require('../range')
 Compiler = require('../compiler')
+Validator = require('../validator')
+SyncPrompt = require('../sync_prompt')
 
 class Execute extends Command
 
@@ -14,21 +16,34 @@ class Execute extends Command
     super
     @compiler = new Compiler({@scope})
 
-  execute: (input...) ->
-    return @switch_mode() if input[0] == 'mode'
+  execute: (input, chain) ->
+    return @switch_mode(chain) if input[0] == 'mode'
     @executeCode input.join(' ')
-    true
+    chain.next()
 
   executeCode: (code, language = null) ->
     try
-      console.log @compiler.execute(code, language)
+      @output.send @compiler.execute(@cleanse(code), language)
     catch err
       @last_error = err
 
-  switch_mode: ->
+  cleanse: (code) ->
+    try
+      return code if Validator.valid(code)
+      @prompt = new SyncPrompt
+        callback: (input, chain) ->
+          code += '\n' + input
+          if Validator.valid(code) then chain.stop() else chain.next()
+        format: '... '
+      @prompt.open()
+      code
+    catch err
+      return '\n'
+
+  switch_mode: (chain) ->
     @compiler.toggle_mode()
     @output.send "Switched mode to '#{@compiler.mode()}'."
-    true
+    chain.next()
 
   # Should always fallback to this
   command_regex: ->

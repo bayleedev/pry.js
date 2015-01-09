@@ -6,7 +6,7 @@ class Stop extends Command
   aliases: ['exit', 'quit']
   definition: 'Ends the current prompt and continues running the rest of the code.'
 
-  execute: ->
-    false
+  execute: (args, chain) ->
+    chain.stop()
 
 module.exports = Stop

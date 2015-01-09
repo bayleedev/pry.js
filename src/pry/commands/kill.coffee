@@ -3,10 +3,11 @@ Command = require('../command')
 class Kill extends Command
 
   name: 'kill!'
-  aliases: ['exit!', 'quit!', 'stop!']
+  aliases: ['kill', 'exit!', 'quit!', 'stop!']
   definition: 'Exits from the entire script.'
 
-  execute: ->
+  execute: (args, chain) ->
+    chain.stop()
     process.kill()
     false
 

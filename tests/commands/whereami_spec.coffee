@@ -29,7 +29,7 @@ describe 'Whereami', ->
       describe 'given I call it with the default arguments', ->
 
         before (complete) ->
-          subject.execute()
+          subject.execute([], next: sinon.spy())
           complete()
 
         it 'stops on the first index', ->
@@ -38,8 +38,8 @@ describe 'Whereami', ->
       describe 'given I call it with a long tail', ->
 
         before (complete) ->
-          subject.execute(0, 100)
+          subject.execute([1, 100], next: sinon.spy())
           complete()
 
         it 'bleeds past the last index', ->
-          expect(spy.calledWith(3, 103)).to.equal true
+          expect(spy.calledWith(2, 103)).to.equal true

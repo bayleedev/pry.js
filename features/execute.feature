@@ -24,3 +24,19 @@ Feature: Execute
     When I type in "mode"
     And I type in "if true then 'coffee'"
     Then The output should be "coffee"
+
+  Scenario: Executes multiline javascript
+    Given I have open the "fizzbuzz" example
+    When I type in "if (true) {"
+    And I type in "'hello world';"
+    And I type in "}"
+    Then The output should be "hello world"
+
+  Scenario: Executes multiline coffeescript
+    Given I have open the "fizzbuzz" example
+    When I type in "mode"
+    And I type in "{"
+    And I type in "foo: 'hello world'"
+    And I type in "bar: 'baz'"
+    And I type in "}.foo"
+    Then The output should be "hello world"

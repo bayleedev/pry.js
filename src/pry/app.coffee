@@ -13,6 +13,9 @@ class App
 
   constructor: (@scope) ->
     @output = new Output()
+    @prompt = new SyncPrompt({
+      callback: @find_command
+    })
 
   commands: ->
     @_commands ||= [
@@ -26,18 +29,14 @@ class App
       new Execute({@scope, @output})
     ]
 
-  user_prompt: ->
-    @_user_prompt ||= new SyncPrompt({
-      callback: @find_command
-    })
-
-  find_command: (input) =>
+  find_command: (input, chain) =>
     for command in @commands()
       if match = command.match(input)
-        return command.execute.apply(command, String(match[1]).trim().split(' '))
+        args = String(match[1]).trim().split(' ')
+        return command.execute.call command, args, chain
     false
 
-  prompt: ->
-    @user_prompt().open()
+  open: ->
+    @prompt.type('whereami')
 
 module.exports = App

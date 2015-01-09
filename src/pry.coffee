@@ -10,7 +10,6 @@ class Pry
 
   open: (scope) ->
     app = new App(scope)
-    app.find_command('whereami')
-    app.prompt()
+    app.open()
 
 module.exports = new Pry

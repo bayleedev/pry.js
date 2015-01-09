@@ -12,8 +12,9 @@ class Play extends Command
     super
     @file = @find_file()
 
-  execute: (start, end = start) ->
+  execute: ([start, end], chain) ->
+    end ||= start
     @command('execute').executeCode(@file.by_lines(start, end), @file.type())
-    true
+    chain.next()
 
 module.exports = Play

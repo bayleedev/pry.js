@@ -5,24 +5,25 @@ class SyncPrompt
 
   done: true
 
-  constructor: ({@callback}) ->
+  constructor: ({@callback, @format}) ->
     @cli = prompt
-      infinite: false,
-      format: 'pryjs> '
-    @done = false
-    @cli.on('value', @handle)
+      infinite: false
+      format: @format || 'pryjs> '
+    @cli.on 'value', (input) =>
+      @callback input.join(' '), @chain()
 
-  open: ->
+  chain: ->
+    {next: @open, stop: @close}
+
+  open: =>
+    @done = false
     @cli.run()
     deasync.runLoopOnce() until @done
 
-  handle: (command) =>
-    if @callback(command.join(' '))
-      @open()
-    else
-      @close()
+  type: (input) ->
+    @cli.emit 'value', input.split(' ')
 
-  close: ->
+  close: =>
     @cli.readline.close()
     @done = true
 

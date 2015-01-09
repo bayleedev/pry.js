@@ -10,7 +10,7 @@ class Help extends Command
   help: 'You just lost the game.'
   args: new Range(0, 1)
 
-  execute: (name) ->
+  execute: ([name], chain) ->
     if name
       command = @command(name)
       @output.add(chalk.blue(command.name), '-', command.definition)
@@ -20,6 +20,6 @@ class Help extends Command
       for name, command of @commands()
         @output.add(chalk.blue(command.name), '-', command.definition) if command.name
       @output.sendAll()
-    true
+    chain.next()
 
 module.exports = Help

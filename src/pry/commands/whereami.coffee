@@ -14,10 +14,12 @@ class Whereami extends Command
     super
     @file = @find_file()
 
-  execute: (before = 5, after = 5) ->
+  execute: ([before, after], chain) ->
+    before ||= 5
+    after ||= 5
     start = @file.line - parseInt(before, 10)
     end = @file.line + parseInt(after, 10)
     @output.send(@file.formatted_content_by_line(start, end))
-    true
+    chain.next()
 
 module.exports = Whereami

@@ -6,11 +6,11 @@ class Wtf extends Command
   definition: 'Shows the last caught exception.'
   help: '`wtf` will show you the last caught exception.'
 
-  execute: ->
+  execute: (args, chain) ->
     if @command('execute').last_error
       @output.send(@command('execute').last_error.stack)
     else
       @output.send('No errors')
-    true
+    chain.next()
 
 module.exports = Wtf
