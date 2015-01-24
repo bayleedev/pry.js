@@ -1,15 +1,10 @@
 SyncPrompt = require('./sync_prompt')
-Help = require('./commands/help')
-Kill = require('./commands/kill')
-Play = require('./commands/play')
-Stop = require('./commands/stop')
-Version = require('./commands/version')
-Whereami = require('./commands/whereami')
-Wtf = require('./commands/wtf')
-Execute = require('./commands/execute')
 Output = require('./output/local_output')
+commands = require('./commands')
 
 class App
+
+  _commands: []
 
   constructor: (@scope) ->
     @output = new Output()
@@ -18,16 +13,9 @@ class App
     })
 
   commands: ->
-    @_commands ||= [
-      new Help({@scope, @output})
-      new Kill({@scope, @output})
-      new Play({@scope, @output})
-      new Stop({@scope, @output})
-      new Version({@scope, @output})
-      new Whereami({@scope, @output})
-      new Wtf({@scope, @output})
-      new Execute({@scope, @output})
-    ]
+    if @_commands.length is 0
+      @_commands.push new command({@output, @scope}) for i,command of commands
+    @_commands
 
   find_command: (input, chain) =>
     for command in @commands()

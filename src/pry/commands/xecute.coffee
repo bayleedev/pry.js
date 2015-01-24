@@ -4,7 +4,7 @@ Compiler = require('../compiler')
 Validator = require('../validator')
 SyncPrompt = require('../sync_prompt')
 
-class Execute extends Command
+class Xecute extends Command
 
   name: ''
 
@@ -49,4 +49,4 @@ class Execute extends Command
   command_regex: ->
     /(.*)/
 
-module.exports = Execute
+module.exports = Xecute
