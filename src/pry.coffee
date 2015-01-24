@@ -3,10 +3,10 @@ App = require('./pry/app')
 class Pry
 
   constructor: ->
-    @it = "(#{@_pry.toString()})()"
+    @it = "(#{@_pry.toString()}).call(this)"
 
   _pry: ->
-    pry.open (input) -> eval(input)
+    pry.open ((input) -> eval(input)).bind(@)
 
   open: (scope) ->
     app = new App(scope)

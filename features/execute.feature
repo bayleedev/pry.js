@@ -8,6 +8,11 @@ Feature: Execute
     When I type in "i"
     Then The output should match "1"
 
+  Scenario: Have the same scope
+    Given I have open the "fizzbuzz" example
+    When I type in "this.bar()"
+    Then The output should match "10"
+
   Scenario: Setting the variable
     Given I have open the "fizzbuzz" example
     When I type in "i = 20"
