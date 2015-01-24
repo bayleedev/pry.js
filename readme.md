@@ -1,6 +1,6 @@
 ## Pryjs
 
-A prototype for a [pry](https://github.com/pry/pry)-like node module.
+A interactive repl for node, inspired by [pry](https://github.com/pry/pry).
 
 [![Build Status](https://travis-ci.org/blainesch/pry.js.svg?branch=master)](https://travis-ci.org/blainesch/pry.js)
 
