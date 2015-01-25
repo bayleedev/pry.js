@@ -28,6 +28,18 @@ describe 'Command', ->
     it 'matches case insensitive strings', ->
       expect(subject.command('blaine').constructor.name).to.equal 'Blaine'
 
+  describe '#typeahead', ->
+
+    describe 'given a name and aliases', ->
+
+      beforeEach (complete) ->
+        subject.name = 'foobar'
+        subject.aliases = ['fb', 'gh']
+        complete()
+
+      it 'matches case insensitive strings', ->
+        expect(subject.typeahead()).to.deep.equal ['fb', 'gh', 'foobar']
+
   describe '#command_regex', ->
 
     describe 'given a name of foo and 1-3 arguments', ->

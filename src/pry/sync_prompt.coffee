@@ -5,10 +5,11 @@ class SyncPrompt
 
   done: true
 
-  constructor: ({@callback, @format}) ->
+  constructor: ({@callback, @format, @typeahead}) ->
     @cli = prompt
       infinite: false
       format: @format || 'pryjs> '
+      completer: @typeahead
     @cli.on 'value', (input) =>
       @callback input.join(' '), @chain()
 

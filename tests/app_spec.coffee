@@ -38,3 +38,32 @@ describe 'app', ->
       it 'doesnt call the first and third command', ->
         expect(subject.commands()[0].execute.calledOnce).to.equal false
         expect(subject.commands()[2].execute.calledOnce).to.equal false
+
+  describe '#typeahead', ->
+
+    describe 'given three commands', ->
+
+      before (complete) ->
+        subject._commands = [
+          typeahead: -> ['foo']
+        ,
+          typeahead: -> ['bar']
+        ,
+          typeahead: -> ['baz']
+        ]
+        complete()
+
+      describe 'given no input', ->
+
+        it 'returns all items', ->
+          expect(subject.typeahead()[0]).to.deep.equal ['foo', 'bar', 'baz']
+
+      describe 'given input of "f"', ->
+
+        it 'returns all items', ->
+          expect(subject.typeahead('f')[0]).to.deep.equal ['foo']
+
+      describe 'given input of "github"', ->
+
+        it 'returns all items', ->
+          expect(subject.typeahead('github')[0]).to.deep.equal []

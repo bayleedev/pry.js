@@ -10,6 +10,15 @@ class Help extends Command
   help: 'You just lost the game.'
   args: new Range(0, 1)
 
+  typeahead: (input = '') ->
+    if input.indexOf('help') is 0
+      items = []
+      for name,command of @commands()
+        items.push "help #{command.name}" if command.name
+      items
+    else
+      ['help']
+
   execute: ([name], chain) ->
     if name
       command = @command(name)

@@ -9,6 +9,12 @@ Feature: Help
     Then The output should match "whereami"
     And The output should match "help"
 
+  Scenario: Getting all the help with extra space
+    Given I have open the "fizzbuzz" example
+    When I type in "help "
+    Then The output should match "whereami"
+    And The output should match "help"
+
   Scenario: Getting specific the help
     Given I have open the "fizzbuzz" example
     When I type in "help help"

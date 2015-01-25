@@ -32,6 +32,11 @@ class Command
   commands: ->
     @constructor.commands
 
+  typeahead: ->
+    items = @aliases.slice(0)
+    items.push(@name)
+    items
+
   # Generates a regex based on the info given
   command_regex: ->
     subject = "^(?:#{@name}"
