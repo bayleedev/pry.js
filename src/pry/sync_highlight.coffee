@@ -1,6 +1,7 @@
 pygmentize = require 'pygmentize-bundled'
 deasync = require 'deasync'
 chalk = require 'chalk'
+util = require 'util'
 
 class SyncHighlight
 
