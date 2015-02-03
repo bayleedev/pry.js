@@ -1,3 +1,5 @@
+# 0.0.9
+
 ## New Features
 
 * Allow typing multiple lines of javascript in the prompt.
