@@ -1,8 +1,6 @@
 Command = require('../command')
 Range = require('../range')
 Compiler = require('../compiler')
-Validator = require('../validator')
-SyncPrompt = require('../sync_prompt')
 
 class Xecute extends Command
 
@@ -18,27 +16,14 @@ class Xecute extends Command
 
   execute: (input, chain) ->
     return @switch_mode(chain) if input[0] == 'mode'
-    @executeCode input.join(' ')
+    @execute_code input.join(' ')
     chain.next()
 
-  executeCode: (code, language = null) ->
+  execute_code: (code, language = null) ->
     try
-      @output.send @compiler.execute(@cleanse(code), language)
+      @output.send @compiler.execute(code, language)
     catch err
       @last_error = err
-
-  cleanse: (code) ->
-    try
-      return code if Validator.valid(code)
-      @prompt = new SyncPrompt
-        callback: (input, chain) ->
-          code += '\n' + input
-          if Validator.valid(code) then chain.stop() else chain.next()
-        format: '... '
-      @prompt.open()
-      code
-    catch err
-      return '\n'
 
   switch_mode: (chain) ->
     @compiler.toggle_mode()
@@ -46,7 +31,7 @@ class Xecute extends Command
     chain.next()
 
   # Should always fallback to this
-  command_regex: ->
-    /(.*)/
+  match: (input) ->
+    [input, input]
 
 module.exports = Xecute

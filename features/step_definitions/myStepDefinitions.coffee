@@ -7,6 +7,9 @@ myStepDefinitionsWrapper = ->
   @When /^I type in "([^"]*)"$/, (command, callback) ->
     @type command, callback
 
+  @When /^I type in ctrl\+v$/, (callback) ->
+    @print_buffer new Buffer(String.fromCharCode(22)), callback
+
   @Then /^The output should match "([^"]*)"$/, (pattern, callback) ->
     @getOutput (result) ->
       if result.match(pattern)

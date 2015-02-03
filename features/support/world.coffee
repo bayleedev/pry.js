@@ -1,4 +1,6 @@
 spawn = require('child_process').spawn
+_ = require('underscore')
+chalk = require('chalk')
 
 WorldConstructor = (callback) ->
 
@@ -16,12 +18,16 @@ WorldConstructor = (callback) ->
         command.slice(1),
         cwd: "#{__dirname}/../../"
       )
-      @process.stdout.on 'data', (data) =>
-        @output.push data.toString()
+      @process.stdout.on 'data', (output) =>
+        @output.push output.toString()
 
     type: (input, callback) =>
       @waitForOutput(callback)
       @process.stdin.write "#{input}\n"
+
+    print_buffer: (buffer, callback) =>
+      @waitForOutput(callback)
+      @process.stdin.write buffer
 
     waitForOutput: (callback) =>
       @_waitForOutput(@output.length, new Date(), callback)
@@ -30,7 +36,12 @@ WorldConstructor = (callback) ->
     # 1 for index to count
     # 1 account for the new prompt it sends
     getOutput: (callback) =>
-      callback(@output[@output.length - 2].trim())
+      output = _.compact(_.map(chalk.stripColor(@output.join('\n'))
+        .replace(/\u001b\[(?:\d|NaN)(?:G|J)/g, '')
+        .split('\n')
+        .join('\n')
+        .split(/(?:-{9}>|\.{10}|\[\d+\] pryjs>).*$/gm), (el) -> el.trim()))
+      callback(output[output.length - 1].trim())
 
     _waitForOutput: (oldOutputLength, oldDate, callback) =>
       if new Date() - 4500 > oldDate
