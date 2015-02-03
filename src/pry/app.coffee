@@ -9,9 +9,9 @@ class App
   constructor: (@scope) ->
     @output = new Output()
     @prompt = new SyncPrompt({
-      callback: @find_command
       typeahead: @typeahead
     })
+    @prompt.on('data', @find_command)
 
   commands: ->
     if @_commands.length is 0
@@ -36,5 +36,6 @@ class App
 
   open: ->
     @prompt.type('whereami')
+    @prompt.open()
 
 module.exports = App

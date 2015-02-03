@@ -1,6 +1,8 @@
 ## New Features
 
 * Allow typing multiple lines of javascript in the prompt.
+* Add typeahead/autocomplete when writing up commands.
+* Add `ctrl+v` for multiline instead of guessing.
 
 # 0.0.8
 
