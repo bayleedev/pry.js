@@ -1,0 +1,21 @@
+#!/usr/bin/env coffee
+
+net = require("net")
+SyncPrompt = require("#{__dirname}/../src/pry/sync_prompt")
+deasync = require("deasync")
+commandDone = false
+
+prompt = new SyncPrompt()
+
+socket = net.connect(port: 8124)
+socket.on 'end', ->
+  process.kill()
+
+socket.on 'data', (data) ->
+  console.log(data.toString())
+  prompt.open()
+
+prompt.on 'data', (line, chain) ->
+  socket.write line
+
+prompt.type('whereami')

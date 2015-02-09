@@ -1,17 +1,28 @@
 SyncPrompt = require('./sync_prompt')
-Output = require('./output/local_output')
+Output = require('./output/remote_output')
 commands = require('./commands')
+deasync = require('deasync')
+net = require('net')
 
 class App
 
   _commands: []
 
   constructor: (@scope) ->
-    @output = new Output()
-    @prompt = new SyncPrompt({
-      typeahead: @typeahead
-    })
-    @prompt.on('data', @find_command)
+    done = false
+    @server = net.createServer (@socket) =>
+      @socket.on "end", =>
+        console.log "server disconnected"
+        @server.close()
+      @socket.on 'data', (line) =>
+        foo = (p) -> p
+        @find_command(line.toString(), {next: foo, stop: foo})
+      @socket.pipe @socket
+      @output = new Output(@socket)
+      done = true
+    @server.listen 8124, ->
+      console.log "server bound"
+    deasync.runLoopOnce() until @done
 
   commands: ->
     if @_commands.length is 0
@@ -28,9 +39,12 @@ class App
     [items, input]
 
   find_command: (input, chain) =>
+    console.log {input}
     for command in @commands()
+      console.log command.constructor.name
       if match = command.match(input.trim())
         args = String(match[1]).trim().split(' ')
+        console.log {args}
         return command.execute.call command, args, chain
     false
 

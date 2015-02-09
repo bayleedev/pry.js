@@ -1,0 +1,3 @@
+class RemotePrompt
+
+  constructor: (@client) ->
