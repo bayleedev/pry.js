@@ -14,9 +14,11 @@ class App
       @socket.on "end", =>
         console.log "server disconnected"
         @server.close()
+        done = true
       @socket.on 'data', (line) =>
         foo = (p) -> p
-        @find_command(line.toString(), {next: foo, stop: foo})
+        line = JSON.parse(line.toString().split('\0')[0])
+        @find_command(line.input, {next: foo, stop: foo}) if line.input
       @socket.pipe @socket
       @output = new Output(@socket)
       done = true

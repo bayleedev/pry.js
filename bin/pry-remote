@@ -1,9 +1,8 @@
 #!/usr/bin/env coffee
 
 net = require("net")
+_ = require("underscore")
 SyncPrompt = require("#{__dirname}/../src/pry/sync_prompt")
-deasync = require("deasync")
-commandDone = false
 
 prompt = new SyncPrompt()
 
@@ -12,10 +11,12 @@ socket.on 'end', ->
   process.kill()
 
 socket.on 'data', (data) ->
-  console.log(data.toString())
-  prompt.open()
+  data = JSON.parse(data.toString().split('\0')[0])
+  if _.contains(_.keys(data), 'output')
+    console.log(data.output[0])
+    prompt.open()
 
 prompt.on 'data', (line, chain) ->
-  socket.write line
+  socket.write JSON.stringify({input: line}) + "\0"
 
 prompt.type('whereami')

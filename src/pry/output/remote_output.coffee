@@ -2,13 +2,11 @@ class RemoteOutput
 
   output: []
 
-  name: 'blaine'
-
   constructor: (@client) ->
 
   send: (data) ->
     console.log {data}
-    @client.write(data)
+    @client.write(JSON.stringify({output: [data]}) + "\0")
 
   add: (args...) ->
     @output.push args.join(' ')

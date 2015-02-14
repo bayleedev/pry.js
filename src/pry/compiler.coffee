@@ -22,6 +22,7 @@ class Compiler
     @execute_js(coffee.compile(code, bare: true))
 
   execute_js: (code) ->
+    console.log {code}
     @scope(code)
 
 module.exports = Compiler
