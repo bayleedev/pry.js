@@ -1,10 +1,11 @@
 {
   "name": "pryjs",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Pry like ability in javascript.",
   "main": "lib/pry.js",
   "scripts": {
-    "test": "mocha --recursive --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests && ./node_modules/.bin/cucumber.js"
+    "test": "mocha --recursive --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests && ./node_modules/.bin/cucumber.js",
+    "publish": "grunt && npm publish"
   },
   "author": "blainesch",
   "license": "MIT",
