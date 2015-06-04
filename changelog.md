@@ -1,3 +1,10 @@
+# 0.0.14
+
+## Fixed Bugs
+
+* No longer executing input multiple times.
+* Show errors as they happen, not just when asked.
+
 # 0.0.9
 
 ## New Features

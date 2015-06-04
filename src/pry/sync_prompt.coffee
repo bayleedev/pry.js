@@ -71,6 +71,7 @@ class SyncPrompt extends EventEmitter
     @state().keypress(@, chars.toString())
 
   send_data: =>
+    return if @done
     @count++
     @emit('data', @lines.trim(), next: @prompt, stop: @close)
     @lines = ''
@@ -89,6 +90,7 @@ class SyncPrompt extends EventEmitter
     @send_data()
 
   close: =>
+    return if @done
     @done = true
     @options.stdin.removeListener('keypress', @keypress)
     @cli.close()

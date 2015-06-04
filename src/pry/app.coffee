@@ -37,5 +37,6 @@ class App
   open: ->
     @prompt.type('whereami')
     @prompt.open()
+    @prompt.close()
 
 module.exports = App
