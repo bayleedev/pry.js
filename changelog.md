@@ -1,3 +1,8 @@
+# 0.1.0
+
+## New Features
+* New variable given to you with the results of the last statement.
+
 # 0.0.14
 
 ## Fixed Bugs

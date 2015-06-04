@@ -52,5 +52,5 @@ Feature: Execute
 
   Scenario: Getting an error
     Given I have open the "fizzbuzz" example
-    When I type in "_"
+    When I type in "i_do_not_exist"
     Then The output should match "is not defined"

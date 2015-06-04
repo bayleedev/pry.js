@@ -6,7 +6,10 @@ class Pry
     @it = "(#{@_pry.toString()}).call(this)"
 
   _pry: ->
-    pry.open ((input) -> eval(input)).bind(@)
+    _ = null
+    pry.open ((input) ->
+      _ = eval(input)
+    ).bind(@)
 
   open: (scope) ->
     app = new App(scope)
