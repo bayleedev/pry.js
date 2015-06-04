@@ -24,6 +24,7 @@ class Xecute extends Command
       @output.send @compiler.execute(code, language)
     catch err
       @last_error = err
+      @output.send err
 
   switch_mode: (chain) ->
     @compiler.toggle_mode()

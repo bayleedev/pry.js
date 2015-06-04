@@ -49,3 +49,8 @@ Feature: Execute
     And I type in "}.foo"
     And I type in ""
     Then The output should be "hello world"
+
+  Scenario: Getting an error
+    Given I have open the "fizzbuzz" example
+    When I type in "_"
+    Then The output should match "is not defined"
