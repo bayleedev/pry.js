@@ -4,8 +4,7 @@
   "description": "Pry like ability in javascript.",
   "main": "lib/pry.js",
   "scripts": {
-    "test": "mocha --recursive --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests && ./node_modules/.bin/cucumber.js",
-    "publish": "grunt && npm publish"
+    "test": "mocha --recursive --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests && ./node_modules/.bin/cucumber.js"
   },
   "author": "blainesch",
   "license": "MIT",
