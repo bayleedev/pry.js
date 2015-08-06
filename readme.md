@@ -19,8 +19,6 @@ pry = require('pryjs')
 eval(pry.it)
 ~~~
 
-![pryjs help](./assets/help.png)
-
 ### Extra Commands
 
 While you are in the prompt there are a few things you might want to do:
