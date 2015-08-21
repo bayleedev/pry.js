@@ -15,9 +15,9 @@ Feature: Help
     Then The output should match "whereami"
     And The output should match "help"
 
-  Scenario: Getting specific the help
+  Scenario: Getting specific help
     Given I have open the "fizzbuzz" example
     When I type in "help help"
     Then The output should not match "whereami"
     And The output should match "help"
-    And The output should be "2" line
+    And The output should be "2" lines
