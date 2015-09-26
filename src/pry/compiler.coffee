@@ -21,7 +21,7 @@ class Compiler
 
   execute_coffee: (code) ->
     linesOfJs = coffee.compile(code, bare: true).split("\n")
-    @execute_js(linesOfJs.filter((l) -> l.length > 0 and l.trim()[0..2] isnt 'var').join(';'))
+    @execute_js(linesOfJs.filter((l) -> l.length > 0 and l.trim()[0..2] isnt 'var').join("\n"))
 
   execute_js: (code) ->
     @scope(code)
