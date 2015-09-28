@@ -11,7 +11,7 @@
   "dependencies": {
     "chalk": "^0.5.1",
     "coffee-script": "^1.8.0",
-    "deasync": "~0.0.7",
+    "deasync": "~0.1.2",
     "pygmentize-bundled": "^2.3.0",
     "underscore": "^1.7.0"
   },
