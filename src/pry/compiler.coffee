@@ -5,10 +5,11 @@ class Compiler
 
   mode_id: 0
 
+  noVarPattern: /^\s*var .*$/gm
+
   modes: ['js', 'coffee']
 
-  constructor: ({@scope, isCoffee}) ->
-    @mode_id = 1 if isCoffee
+  constructor: ({@scope}) ->
 
   mode: ->
     @modes[@mode_id]
@@ -20,8 +21,9 @@ class Compiler
     @["execute_#{language}"](code)
 
   execute_coffee: (code) ->
-    linesOfJs = coffee.compile(code, bare: true).split("\n")
-    @execute_js(linesOfJs.filter((l) -> l.length > 0 and l.trim()[0..2] isnt 'var').join("\n"))
+    @execute_js(coffee
+      .compile(code, bare: true)
+      .replace(@noVarPattern, ''))
 
   execute_js: (code) ->
     @scope(code)

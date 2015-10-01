@@ -50,6 +50,12 @@ Feature: Execute
     And I type in ""
     Then The output should be "hello world"
 
+  Scenario: Should not overwrite global variables in Coffee
+    Given I have open the "fizzbuzz" example
+    When I type in "mode"
+    And I type in "i = i || 20"
+    Then The output should match "1"
+
   Scenario: Getting an error
     Given I have open the "fizzbuzz" example
     When I type in "i_do_not_exist"
