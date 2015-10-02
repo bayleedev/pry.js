@@ -9,10 +9,6 @@ node_js:
   - 0.10.33
   - 4.1.1
 
-before_script:
-  - npm install -g mocha
-  - npm install -g coffee-script
-
 cache:
   directories:
     - node_modules
