@@ -5,6 +5,8 @@ class Compiler
 
   mode_id: 0
 
+  noVarPattern: /^\s*var .*$/gm
+
   modes: ['js', 'coffee']
 
   constructor: ({@scope}) ->
@@ -19,7 +21,9 @@ class Compiler
     @["execute_#{language}"](code)
 
   execute_coffee: (code) ->
-    @execute_js(coffee.compile(code, bare: true))
+    @execute_js(coffee
+      .compile(code, bare: true)
+      .replace(@noVarPattern, ''))
 
   execute_js: (code) ->
     @scope(code)
