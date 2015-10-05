@@ -1,4 +1,4 @@
-# 0.1.1
+# 0.1.2
 
 ## Fixed Bugs
 * Don't redeclare variables when executing coffee-script.
