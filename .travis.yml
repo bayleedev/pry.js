@@ -1,11 +1,13 @@
 language: node_js
 
+sudo: required
+
+services:
+  - docker
+
 node_js:
   - 0.10.33
-
-before_script:
-  - npm install -g mocha
-  - npm install -g coffee-script
+  - 4.1.1
 
 cache:
   directories:

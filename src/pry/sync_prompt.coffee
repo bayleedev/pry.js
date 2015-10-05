@@ -21,7 +21,7 @@ class MultilineState
       input.cli.setPrompt(prompt.replace(/[^>](?!$)/g, '-'))
     else
       input.cli.setPrompt(prompt.replace(/.(?!$)/g, '.'))
-    input.cli._refreshLine()
+    input.cli.prompt()
 
 class SinglelineState
 
