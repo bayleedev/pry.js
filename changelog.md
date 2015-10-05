@@ -1,3 +1,9 @@
+# 0.1.1
+
+## Fixed Bugs
+* Don't redeclare variables when executing coffee-script.
+* Upgrade deaasync for Node v4.1.1
+
 # 0.1.0
 
 ## New Features
