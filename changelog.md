@@ -1,11 +1,19 @@
+# 0.1.4
+
+## New Features
+
+* Use `continue` instead of `stop`.
+
 # 0.1.3
 
 ## Fixed Bugs
+
 * Pushed Bad Source to NPM
 
 # 0.1.2
 
 ## Fixed Bugs
+
 * Don't redeclare variables when executing coffee-script.
 * Upgrade deaasync for Node v4.1.1
 
