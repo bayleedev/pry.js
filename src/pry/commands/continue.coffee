@@ -1,12 +1,12 @@
 Command = require('../command')
 
-class Stop extends Command
+class Continue extends Command
 
-  name: 'stop'
-  aliases: ['exit', 'quit']
+  name: 'continue'
+  aliases: ['exit', 'quit', 'stop']
   definition: 'Ends the current prompt and continues running the rest of the code.'
 
   execute: (args, chain) ->
     chain.stop()
 
-module.exports = Stop
+module.exports = Continue
