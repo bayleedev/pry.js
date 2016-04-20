@@ -24,6 +24,10 @@ pry = require('pryjs')
 eval(pry.it)
 ~~~
 
+You *MUST* name the variable `pry`. You are executing an anonymous function, and
+this assumes the variable is named `pry` in your scope. This is so it can keep
+prompting you.
+
 ### Extra Commands
 
 While you are in the prompt there are a few things you might want to do:
