@@ -15,6 +15,11 @@ npm install --save pryjs
 Throw this beautiful snippet in the middle of your code:
 
 ~~~ javascript
+import pry from 'pryjs'
+eval(pry.it)
+~~~
+
+~~~ javascript
 pry = require('pryjs')
 eval(pry.it)
 ~~~
