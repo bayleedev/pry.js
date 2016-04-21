@@ -29,6 +29,9 @@
     "example": "examples",
     "test": "test"
   },
+  "bin" : {
+    "pryjs" : "./bin/pryjs"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/blainesch/pry.js.git"

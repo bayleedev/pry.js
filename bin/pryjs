@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+const pry = require('pryjs')
+eval(pry.it)
