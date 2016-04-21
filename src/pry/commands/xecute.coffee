@@ -4,7 +4,9 @@ Compiler = require('../compiler')
 
 class Xecute extends Command
 
-  name: ''
+  name: 'mode'
+  definition: 'Switched between CoffeeScript and JavaScript execution.'
+  help: 'Type `mode` to switch between using JavaScript or CoffeeScript.'
 
   last_error: null
 
