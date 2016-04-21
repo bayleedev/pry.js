@@ -1,3 +1,9 @@
+# 1.0.1
+
+## Fixed Bug
+
+* Uses the file length to correct get `whereami` lines.
+
 # 1.0.0
 
 ## New Features
