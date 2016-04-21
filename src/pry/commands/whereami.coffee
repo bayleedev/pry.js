@@ -17,8 +17,8 @@ class Whereami extends Command
   execute: ([before, after], chain) ->
     before ||= 5
     after ||= 5
-    start = @file.line - parseInt(before, 10)
-    end = @file.line + parseInt(after, 10)
+    start = Math.max(0, @file.line - parseInt(before, 10))
+    end = Math.min(@file.length, @file.line + parseInt(after, 10))
     @output.send(@file.formatted_content_by_line(start, end))
     chain.next()
 
