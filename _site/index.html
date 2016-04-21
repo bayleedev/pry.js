@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+	<meta charset="utf-8">
+	<title> Pry.js</title>
+	<meta name="description" content="A REPL for Node.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-Frame-Options" content="sameorigin">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!--Favicon-->
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+	<!-- Canonical -->
+	<link rel="canonical" href="http://example.com/">
+
+	<!-- RSS -->
+	<link rel="alternate" type="application/atom+xml" title="Pry.js" href="http://example.com/feed.xml" />
+
+	<!-- Font Awesome -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+	
+
+	<!-- KaTeX -->
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"></script>
+	
+
+	<!-- Google Analytics -->
+	
+</head>
+
+  <body>
+    <header class="site-header">
+	
+<a href="https://your-url" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+	<div class="branding">
+		<h1>
+			<a href="/">
+				<img class="logo" src="/img/pryjs.jpg" alt="Pry.js"/>
+			</a>
+			Pry.js
+		</h1>
+	</div>
+	<nav class="site-nav">
+		<ul>
+			
+			
+			
+			
+			
+			
+			
+		</ul>
+	</nav>
+</header>
+
+    <div class="content">
+      <div class="home">
+  
+  <div class="call-out" 
+  style="background-image: url('/')">
+    <p>A interactive repl for node, inspired by <a href="http://pryrepl.org/">pry</a>.</p>
+
+  </div>
+  
+  <article>
+    <p>This offers many advantages over other debuggers. It allows you to see and write
+in <em>CoffeeScript</em> or <em>JavaScript</em>, so you can debug in the language you wrote in.
+It’s easy to setup. Just a simple <code class="highlighter-rouge">npm install</code> and it’s already working! The
+tests run the examples! It uses
+<a href="https://www.npmjs.com/package/cucumber">Cucumber</a> to run the examples for all
+of our tests, so you know they work!</p>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save pryjs
+</code></pre>
+</div>
+
+<h3 id="usage">Usage</h3>
+
+<p>Throw this beautiful snippet in the middle of your code:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">pry</span> <span class="nx">from</span> <span class="s1">'pryjs'</span>
+<span class="nb">eval</span><span class="p">(</span><span class="nx">pry</span><span class="p">.</span><span class="nx">it</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">pry</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'pryjs'</span><span class="p">)</span>
+<span class="nb">eval</span><span class="p">(</span><span class="nx">pry</span><span class="p">.</span><span class="nx">it</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>You <em>MUST</em> name the variable <code class="highlighter-rouge">pry</code>. You are executing an anonymous function, and
+this assumes the variable is named <code class="highlighter-rouge">pry</code> in your scope. This is so it can keep
+prompting you.</p>
+
+<h2 id="global-command">Global Command</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>npm install -g pryjs
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pryjs
+</code></pre>
+</div>
+
+<h2 id="extra-commands">Extra Commands</h2>
+
+<p>While you are in the prompt there are a few things you might want to do:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">help</code> display all the available commands.</li>
+  <li><code class="highlighter-rouge">kill</code> completely stop the script.</li>
+  <li><code class="highlighter-rouge">mode</code> switch between javascript and coffeescript mode. Defaults to javascript.</li>
+  <li><code class="highlighter-rouge">play</code> play lines of code as if you had entered them. Accepts two integers: start and end. End defaults to start.</li>
+  <li><code class="highlighter-rouge">stop</code> will exit the pryjs prompt and continue through the app.</li>
+  <li><code class="highlighter-rouge">version</code> display the current version.</li>
+  <li><code class="highlighter-rouge">whereami</code> will show you exactly where you are in the code. Accepts two integers to replace the default 5 before and 5 after.</li>
+  <li><code class="highlighter-rouge">wtf</code> display the last caught exception.</li>
+</ul>
+
+<h2 id="learn-more">Learn More</h2>
+
+<p>There are more examples and information in the readme of the <a href="https://github.com/blainesch/pry.js">GitHub Repo</a>.</p>
+
+  </article>
+</div>
+
+    </div>
+    
+<script src="/js/katex_init.js"></script>
+
+
+
+<footer class="site-footer">
+	<p class="text">Powered by <a href="http://jekyllrb.com">Jekyll</a> with <a href="https://rohanchandra.github.io/project/type/">Type Theme</a>
+</p>
+</footer>
+
+
+  </body>
+</html>
