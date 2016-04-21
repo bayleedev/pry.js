@@ -1,3 +1,13 @@
+# 1.0.0
+
+## New Features
+
+* When you install globally you get a `pryjs` binary added to your PATH.
+
+## Fixed Bugs
+
+* Small files no longer break `whereami`.
+
 # 0.1.4
 
 ## New Features
