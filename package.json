@@ -4,7 +4,8 @@
   "description": "Pry like ability in javascript.",
   "main": "lib/pry.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --recursive --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests && ./node_modules/.bin/cucumber.js"
+    "test": "./node_modules/.bin/mocha --recursive --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests && ./node_modules/.bin/cucumber.js",
+    "docs:publish": "gh-pages -d docs"
   },
   "author": "blainesch",
   "license": "MIT",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "chai": "^1.10.0",
     "cucumber": "^0.4.7",
+    "gh-pages": "^0.11.0",
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-coffee": "^0.12.0",
@@ -29,8 +31,8 @@
     "example": "examples",
     "test": "test"
   },
-  "bin" : {
-    "pryjs" : "./bin/pryjs"
+  "bin": {
+    "pryjs": "./bin/pryjs"
   },
   "repository": {
     "type": "git",

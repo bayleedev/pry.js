@@ -1,12 +1,17 @@
-## Pryjs
+---
+layout: home
+---
 
-A interactive repl for node, inspired by [pry](https://github.com/pry/pry).
+This offers many advantages over other debuggers. It allows you to see and write
+in *CoffeeScript* or *JavaScript*, so you can debug in the language you wrote in.
+It's easy to setup. Just a simple `npm install` and it's already working! The
+tests run the examples! It uses
+[Cucumber](https://www.npmjs.com/package/cucumber) to run the examples for all
+of our tests, so you know they work!
 
-[![Build Status](https://travis-ci.org/blainesch/pry.js.svg?branch=master)](https://travis-ci.org/blainesch/pry.js)
+## Quick Start
 
-### Installing
-
-~~~
+~~~ bash
 npm install --save pryjs
 ~~~
 
@@ -28,7 +33,17 @@ You *MUST* name the variable `pry`. You are executing an anonymous function, and
 this assumes the variable is named `pry` in your scope. This is so it can keep
 prompting you.
 
-### Extra Commands
+## Global Command
+
+~~~ bash
+npm install -g pryjs
+~~~
+
+~~~ bash
+pryjs
+~~~
+
+## Extra Commands
 
 While you are in the prompt there are a few things you might want to do:
 
@@ -41,10 +56,6 @@ While you are in the prompt there are a few things you might want to do:
 * `whereami` will show you exactly where you are in the code. Accepts two integers to replace the default 5 before and 5 after.
 * `wtf` display the last caught exception.
 
-### Examples
+## Learn More
 
-Examples can be found in the [examples directory](./examples).
-
-### Screenshots
-
-![pryjs](./assets/demo.png)
+There are more examples and information in the readme of the [GitHub Repo](https://github.com/blainesch/pry.js).

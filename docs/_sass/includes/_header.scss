@@ -1,0 +1,86 @@
+.site-header {
+  @extend %padding-small;
+  background: $brand-color;
+  border-bottom: 1px solid $border-color;
+  display: inline-block;
+  float: left;
+  width: 100%;
+
+  a {
+    color: $header-link-color;
+  }
+
+  .branding h1 {
+    text-indent: -99999px;
+  }
+
+  .logo {
+    width: 200px;
+    float: left;
+    margin-top: -3px;
+    border-radius: 0.2em;
+    margin-right: 1em;
+    text-indent: -99999px;
+  }
+
+  .site-title {
+    float: left;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  .site-nav {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      line-height: 1.5;
+      float: right;
+      text-align: right;
+    }
+    li {
+      display: inline;
+      float: left;
+      margin-right: 0.4em;
+    }
+    @media (max-width: 1100px) {
+      ul {
+        display: inline-block;
+        float: left;
+        padding-top: $padding-small;
+        text-align: left;
+        width: 100%;
+      }
+    }
+  }
+  .github-corner {
+    position: fixed;
+    top: 0;
+    right: 0;
+    &:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+  }
+  @keyframes octocat-wave {
+      0%, 100% {
+          transform: rotate(0)
+      }
+      20%,
+      60% {
+          transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+          transform: rotate(10deg)
+      }
+  }
+  @media (max-width: 500px) {
+      .github-corner:hover .octo-arm {
+          animation: none
+      }
+      .github-corner .octo-arm {
+          animation: octocat-wave 560ms ease-in-out
+      }
+  }
+}
