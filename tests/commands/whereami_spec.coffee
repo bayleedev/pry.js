@@ -13,6 +13,8 @@ describe 'Whereami', ->
       output:
         send: -> true
     subject.file =
+      length: ->
+        10
       formatted_content_by_line: spy
       content: ->
         'The\nquick\nbrown\nfox\njumps\nover\nthe\nlazy\ndog'
@@ -33,7 +35,7 @@ describe 'Whereami', ->
           complete()
 
         it 'stops on the first index', ->
-          expect(spy.calledWith(-2, 8)).to.equal true
+          expect(spy.calledWith(0, 8)).to.equal true
 
       describe 'given I call it with a long tail', ->
 
@@ -42,4 +44,4 @@ describe 'Whereami', ->
           complete()
 
         it 'bleeds past the last index', ->
-          expect(spy.calledWith(2, 103)).to.equal true
+          expect(spy.calledWith(2, 10)).to.equal true

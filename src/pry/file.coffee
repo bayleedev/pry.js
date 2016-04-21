@@ -16,7 +16,7 @@ class File
     @content().split('\n').slice(start - 1, end).join('\n')
 
   length: ->
-    @content().split('\n').length
+    @content().split('\n').length || 0
 
   content: ->
     @_content ||= fs.readFileSync(@name).toString()
