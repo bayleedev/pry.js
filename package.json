@@ -5,7 +5,8 @@
   "main": "lib/pry.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --recursive --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests && ./node_modules/.bin/cucumber.js",
-    "docs:publish": "gh-pages -d docs"
+    "docs:publish": "gh-pages -d docs",
+    "build": "grunt"
   },
   "author": "blainesch",
   "license": "MIT",
@@ -21,6 +22,7 @@
     "cucumber": "^0.4.7",
     "gh-pages": "^0.11.0",
     "grunt": "^0.4.5",
+    "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-coffee": "^0.12.0",
     "mocha": "^2.3.3",
