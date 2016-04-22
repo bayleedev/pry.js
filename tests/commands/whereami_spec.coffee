@@ -34,14 +34,5 @@ describe 'Whereami', ->
           subject.execute([], next: sinon.spy())
           complete()
 
-        it 'stops on the first index', ->
-          expect(spy.calledWith(0, 8)).to.equal true
-
-      describe 'given I call it with a long tail', ->
-
-        before (complete) ->
-          subject.execute([1, 100], next: sinon.spy())
-          complete()
-
-        it 'bleeds past the last index', ->
-          expect(spy.calledWith(2, 10)).to.equal true
+        it 'blindly puts lines numbers', ->
+          expect(spy.calledWith(-2, 8)).to.equal true
