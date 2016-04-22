@@ -1,3 +1,9 @@
+# 1.0.2
+
+## Fixed Bug
+
+* Array index issue caused `whereami` to break on smaller files.
+
 # 1.0.1
 
 ## Fixed Bug

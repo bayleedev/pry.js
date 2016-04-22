@@ -22,7 +22,7 @@ class File
     @_content ||= fs.readFileSync(@name).toString()
 
   formatted_content_by_line: (start, end = start, line = @line) ->
-    start = (if start < 0 then 0 else start)
+    start = (if start <= 0 then 1 else start)
     new SyncHighlight(@content(), @type()).code_snippet(start, end, line)
 
 module.exports = File
