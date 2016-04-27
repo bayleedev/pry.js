@@ -1,3 +1,10 @@
+# 1.1.0
+
+## New Features
+
+* Dropping support for node `0.*`.
+* Adding support for node `6`.
+
 # 1.0.2
 
 ## Fixed Bug
