@@ -6,6 +6,7 @@ class Pry
     @it = "(#{@_pry.toString()}).call(this)"
 
   _pry: ->
+    pry = require('pryjs')
     _ = null
     pry.open ((input) ->
       _ = eval(input)
