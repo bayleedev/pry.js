@@ -6,11 +6,11 @@ module.exports = (grunt) ->
         expand: true
         cwd: './src/'
         src: ['**/*.coffee']
-        dest: './lib/'
+        dest: './build/'
         ext: '.js'
     clean:
       compiled:
-        src: ["lib/**/*"]
+        src: ["build/**/*"]
         options:
           "no-write": false
 

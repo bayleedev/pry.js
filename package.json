@@ -2,7 +2,7 @@
   "name": "pryjs",
   "version": "1.0.2",
   "description": "Pry like ability in javascript.",
-  "main": "lib/pry.js",
+  "main": "build/pry.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --recursive --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests && ./node_modules/.bin/cucumber.js",
     "docs:publish": "gh-pages -d docs",
