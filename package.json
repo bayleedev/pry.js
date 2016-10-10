@@ -4,7 +4,8 @@
   "description": "Pry like ability in javascript.",
   "main": "build/pry.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --recursive --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests && ./node_modules/.bin/cucumber.js",
+    "pretest": "npm run build && cd examples && npm install",
+    "test": "mocha --recursive --reporter=mocha-pride --compilers coffee:coffee-script/register ./tests && cucumber.js",
     "docs:publish": "gh-pages -d docs",
     "build": "grunt"
   },

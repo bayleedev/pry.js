@@ -1,0 +1,10 @@
+{
+  "name": "pry-examples",
+  "version": "1.0.0",
+  "description": "Pry usage examples",
+  "author": "Blaine Schmeisser",
+  "license": "MIT",
+  "dependencies": {
+    "pryjs": "file:../"
+  }
+}

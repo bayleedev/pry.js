@@ -1,4 +1,4 @@
-pry = require('../src/pry') # require('pryjs')
+pry = require('pryjs')
 
 # http://rosettacode.org/wiki/FizzBuzz#CoffeeScript
 class FizzBuzz

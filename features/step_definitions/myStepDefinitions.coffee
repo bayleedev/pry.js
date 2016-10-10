@@ -2,7 +2,7 @@ myStepDefinitionsWrapper = ->
   @World = require("../support/world").World
 
   @Given /^I have open the "([^"]*)" example$/, (example, callback) ->
-    @runCommand "coffee examples/#{example}.coffee", callback
+    @runCommand "node examples/#{example}.js", callback
 
   @When /^I type in "([^"]*)"$/, (command, callback) ->
     @type command, callback
