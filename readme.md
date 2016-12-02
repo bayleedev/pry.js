@@ -7,7 +7,7 @@ A interactive repl for node, inspired by [pry](https://github.com/pry/pry).
 ### Installing
 
 ~~~
-npm install --save pryjs
+npm install --save-dev pryjs
 ~~~
 
 ### Usage
